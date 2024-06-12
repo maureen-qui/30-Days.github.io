@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a5503;
+        }
+
+        .calendar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .day {
+            background-color: #ffa500;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+            text-align: center;
+            color: white;
+            transition: transform 0.3s, ease-in-out;
+            cursor: pointer;
+        }
+
+        .day:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.22);
+        }
+
+        .circle {
+            background-color: #fff;
+            color: #ffa500;
+            border: 2px solid #ffa500;
+            border-radius: 50%;
+            padding: 10px;
+            margin: 10px 0;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+            transition: transform 0.3s;
+        }
+
+        .circle:hover {
+            transform: translateY(-5px);
+        }
+
+        .details {
+            display: none;
+            text-align: left;
+            padding: 10px;
+            background-color: #fff;
+            color: #0f0e0e;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .meal {
+            padding: 5px 0;
+            border-bottom: 1px solid #ffa500;
+        }
+
+        .meal:last-child {
+            border-bottom: none;
+        }
+
+        .recipe {
+            display: none;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .meal:hover .recipe {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        <div class="day">
+            <div class="circle" data-day="day1-details">Day 1</div>
+            <div id="day1-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe</h4>
+                        <p>1 cup of spinach</p>
+                        <p>1/2 cucumber</p>
+                        <p>1 green apple</p>
+                        <p>1/2 lemon (juice)</p>
+                        <p>1 cup of water</p>
+                        <p>1/2 cup of mala (fermented buttermilk)</p>
+                        <p>Blend all until smooth and creamy</p>
+                        <p>Estimated percentage of sugars: 2.2%-2.5%</p>           
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Smoothie Recipe: Cabbage Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>Cabbage, carrots, celery, onion, garlic, diced tomatoes, vegetable broth, olive oil, thyme, oregano, salt, pepper</p>
+                        <h4>Instructions:</h4>
+                        <p>1. Sauté onion and garlic in olive oil until soft.</p>
+                        <p>2. Add cabbage, carrots, celery, diced tomatoes, broth, thyme, oregano, salt, and pepper.</p>
+                        <p>3. Simmer until veggies are tender.</p>
+                        <p>4. Adjust seasoning if needed.</p>
+                        <p>5. Serve hot, garnish with parsley if desired.</p>
+                        <p>Estimated percentage of sugars: 3.16%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Smoothie Recipe</h4>
+                        <p>1 cup of berries</p>
+                        <p>1/2 avocado</p>
+                        <p>1 tablespoon of chia seeds</p>
+                        <p>1/2 cup of mala (kaffir or fermented milk or plain yogurt)</p>
+                        <p>Blend all until smooth and creamy</p>
+                        <p>Estimated percentage of sugars: 2.2% to 2.5%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 2 -->
+        <div class="day">
+            <div class="circle" data-day="day2-details">Day 2</div>
+            <div id="day2-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe</h4>
+                        <p>1 cup of spinach</p>
+                        <p>1/2 avocado</p>
+                        <p>Juice of 1/2 lemon</p>
+                        <p>1 cup unsweetened coconut water</p>
+                        <p>1/2 cup unsweetened mala (fermented milk)</p>
+                        <p>Blend all until smooth and creamy</p>
+                        <p>Estimated percentage of sugars: 2.2% to 2.5%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Protein-Packed Vegetable Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 cups low-sodium vegetable broth</p>
+                        <p>1 cup spinach</p>
+                        <p>1/2 cup diced tofu or cooked chicken</p>
+                        <p>1/4 cup each diced carrots, celery, onion</p>
+                        <p>1 clove garlic, minced</p>
+                        <p>Salt, pepper to taste</p>
+                        <p>Optional: 1 tbsp olive oil</p>
+                        <p>Estimated percentage of fats: 2.8%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Herbal Tea</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cinnamon stick or 1 teaspoon ground cinnamon</p>
+                        <p>1-2 cups boiled water</p>
+                        <p>Optional: honey or lemon for flavor</p>
+                        <p>Estimated percentage of sugars: 1.0% to 2.1%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 3 -->
+        <div class="day">
+            <div class="circle" data-day="day3-details">Day 3</div>
+            <div id="day3-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Recipe: Fruits Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup fermented milk (kefir)</p>
+                        <p>1/2 cup frozen mixed berries (strawberries, blueberries, raspberries)</p>
+                        <p>1/2 banana (optional, for added sweetness and creaminess)</p>
+                        <p>1 tablespoon chia seeds (optional, for extra fiber and omega-3 fatty acids)</p>
+                        <p>Ice cubes (optional, for desired consistency)</p>
+                        <p>Blend until smooth and creamy.</p>
+                        <p>Estimated sugars: 5% to 10%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Vegetable Broth Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>8 cups water</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 carrots, chopped</p>
+                        <p>2 celery stalks, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Create a Fat-free vegetable broth soup bysimmering chopped onions, carrots, celery, garlic, tomato, and parsley in water, then straining and seasoning to taste. </p>
+                        <p>Estimated fats: 0%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Creamy Green Fermented Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup fermented milk (such as kefir)</p>
+                        <p>1 small cucumber, peeled and chopped</p>
+                        <p>1/2 avocado, peeled and pitted</p>
+                        <p>Handful of spinach leaves</p>
+                        <p>Juice of 1/2 lemon</p>
+                        <p>1 tablespoon flaxseed meal (optional, for added fiber and omega-3 fatty acids)</p>
+                        <p>Ice cubes (optional, for desired consistency)</p>
+                        <p>Blend until smooth and creamy.</p>
+                        <p>Estimated sugars: 2.2% to 2.5%</p>   
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Day 4 -->
+        <div class="day">
+            <div class="circle" data-day="day4-details">Day 4</div>
+            <div id="day4-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Recipe: Pawpaw and Fermented Milk Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 ripe pawpaw (papaya), peeled, deseeded, and chopped</p>
+                        <p>1 cup fermented milk (kefir or yogurt)</p>
+                        <p>1/2 cup unsweetened almond milk (or any other unsweetened milk alternative)</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                        <p>Blend all the ingredients until smooth and creamy.</p>
+                        <p>Estimated sugars: 2.3%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Creamy Pumpkin Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 tablespoons olive oil</p>
+                        <p>1 medium onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>1 medium-sized pumpkin, peeled, seeded, and chopped into cubes (about 4 cups)</p>
+                        <p>4 cups vegetable broth</p>
+                        <p>1 teaspoon ground cumin</p>
+                        <p>1/2 teaspoon ground cinnamon</p>
+                        <p>1/4 teaspoon ground nutmeg</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>1/2 cup coconut milk (optional, for added creaminess)</p>
+                        <p>Fresh parsley or chives for garnish (optional)</p>
+                        <p>Sauté onions and garlic, then simmer chopped pumpkin in vegetable broth, blend until smooth, season with cumin, cinnamon, nutmeg, salt, and pepper, optionally adding coconut milk for creaminess, and garnish with parsley or chives before serving.</p>
+                        <p>Estimated fats and carbs: 4.6%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Green Tea</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 green tea bag or 1 teaspoon of loose green tea leaves</p>
+                        <p>1 inch piece of fresh ginger, thinly sliced</p>
+                        <p>1 tablespoon of fresh lemon juice</p>
+                        <p>Optional: a few fresh mint leaves</p>
+                        <p>Boil water, steep green tea with ginger, add lemon juice, and optionally garnish with mint leaves before enjoying hot or chilled.</p>
+                        <p>Estimated sugar: 0%</p>    
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Day 5 -->
+        <div class="day">
+            <div class="circle" data-day="day5-details">Day 5</div>
+            <div id="day5-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Ginger Carrot Smoothie</h4>
+                        <h4>Ingredients</h4>
+                        <p>1/2 fresh ginger root, peeled</p>
+                        <p>1 large carrot, peeled and chopped</p>
+                        <p>1 cup fermented milk (such as kefir or yogurt)</p>
+                        <p>1/2 banana</p>
+                        <p>Ice cubes (optional)</p>
+                        <p>Blend all ingredients until smooth and well combined.</p>
+                        <p>Estimated sugar: 27-28 grams</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Protein-Packed Vegetable Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 large carrots, washed and chopped</p>
+                        <p>2 cups fresh spinach leaves, washed</p>
+                        <p>1 cucumber, washed and chopped</p>
+                        <p>1 scoop unflavored protein powder</p>
+                        <p>Water (optional, for desired consistency)</p>
+                        <p>Blend all ingredients until smooth and well combined.</p>
+                        <p>Estimated sugar: 1.4 grams</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Bone Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2-3 pounds of beef (with some meat attached for flavor)</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 carrots, chopped</p>
+                        <p>2 celery stalks, chopped</p>
+                        <p>4 cloves of garlic, minced</p>
+                        <p>1 tablespoon apple cider vinegar (optional, helps extract nutrients from bones)</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Water</p>
+                        <p>Optional: herbs such as thyme, bay leaves, or parsley for flavor</p>
+                        <p>Simmer beef or chicken bones with vegetables and herbs for several hours, then strain for a rich and flavorful broth.</p>
+                        <p>Estimated fats: 0.2 grams</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 6 -->
+        <div class="day">
+            <div class="circle" data-day="day6-details">Day 6</div>
+            <div id="day6-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Cauliflower Date Smoothie</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 cup cauliflower florets</p>
+                        <p>1/2 cup pitted dates</p>
+                        <p>1 cup fermented milk (kefir or plain yogurt)</p>
+                        <p>1/2 teaspoon ground cinnamon</p>
+                        <p>1/2 teaspoon ground turmeric</p>
+                        <p>Steam the cauliflower florets until they are tender. Allow them to cool to room temperature.</p>
+                        <p>Blend all ingredients until smooth and creamy.</p>
+                        <p>Estimated sugar: 8.67% to 9.33%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Spinach Pineapple Smoothie with Fermented Milk</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup fresh spinach leaves</p>
+                        <p>1/2 cup pineapple chunks</p>
+                        <p>1 cup fermented milk (kefir or plain yogurt)</p>
+                        <p>Blend all ingredients until smooth and creamy.</p>
+                        <p>Estimated sugar: 2.5% to 3%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: White Bean and Vegetable Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup (200 grams) frozen spinach (optional)</p>
+                        <p>2 cans Cannellini beans or white beans, drained and rinsed</p>
+                        <p>1 large carrot, diced</p>
+                        <p>1 celery stalk, diced</p>
+                        <p>1 garlic clove, minced</p>
+                        <p>1 medium onion, diced</p>
+                        <p>2 medium potatoes, diced</p>
+                        <p>1 sprig rosemary</p>
+                        <p>1 tablespoon tomato paste</p>
+                        <p>1/8 teaspoon black pepper</p>
+                        <p>1/2 teaspoon paprika</p>
+                        <p>1 tablespoon olive oil</p>
+                        <p>1/3 cup white wine</p>
+                        <p>2 cups vegetable broth or hot water</p>
+                        <h4>Instructions:</h4>
+                        <p>Thaw spinach if using.</p>
+                        <p>Sauté onion, carrot, celery, and garlic.</p>
+                        <p>Add potatoes, beans, rosemary, tomato paste, spices, and white wine.</p>
+                        <p>Pour in broth or water, simmer until potatoes are tender.</p>
+                        <p>Add spinach if desired, cook for 5 more minutes.</p>
+                        <p>Remove rosemary sprig, adjust seasoning.</p>
+                        <p>Serve hot.</p>
+                        <p>Estimated fats: 0.63%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 7 -->
+        <div class="day">
+            <div class="circle" data-day="day7-details">Day 7</div>
+            <div id="day7-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Kale Smoothie</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 cup kale (stems removed)</p>
+                        <p>1/2 banana</p>
+                        <p>1/2 cup pineapple chunks</p>
+                        <p>Juice of 1/2 lime</p>
+                        <p>1 cup coconut water</p>
+                        <p>1/2 cup fermented milk (mala)</p>
+                        <h4>Instructions:</h4>
+                        <p>Blend until smooth and creamy.</p>
+                        <p>Estimated Sugar percentage ≈ 14.6%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Red Lentil Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1/2 cup red lentils, rinsed</p>
+                        <p>1-inch piece of ginger, minced</p>
+                        <p>1 onion, finely chopped</p>
+                        <p>1/4 cup coconut oil, olive oil, or ghee</p>
+                        <p>2 sweet potatoes, diced</p>
+                        <p>2 carrots, diced</p>
+                        <p>1 apple, cored and diced</p>
+                        <p>1/2 teaspoon chili powder</p>
+                        <p>1/2 teaspoon paprika</p>
+                        <p>1/2 teaspoon ground cumin</p>
+                        <p>4 1/2 cups bone or vegetable broth</p>
+                        <p>Sea salt and black pepper, to taste</p>
+                        <p>Coconut cream (optional)</p>
+                        <h4>Instructions:</h4>
+                        <p>Lentil soup with sweet potato, apple, and spices, simmered until tender in flavorful broth.</p>
+                        <p>Estimated fat = 0.378%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Herbal Tea</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 teaspoon green tea leaves (or 1 green tea bag)</p>
+                        <p>1 inch piece of fresh ginger, sliced</p>
+                        <p>1 teaspoon honey (optional, for sweetness)</p>
+                        <p>Juice from 1/2 lemon</p>
+                        <p>2 cups water</p>
+                        <h4>Instructions:</h4>
+                        <p>Boil 2 cups of water.</p>
+                        <p>Add 1 teaspoon of green tea leaves and sliced ginger.</p>
+                        <p>Simmer for 5 minutes, then let it steep for 2-3 minutes.</p>
+                        <p>Strain the tea into a cup.</p>
+                        <p>Add honey (optional) and lemon juice.</p>
+                        <p>Stir and enjoy hot or cold.</p>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 8 -->
+        <div class="day">
+            <div class="circle" data-day="day8-details">Day 8</div>
+            <div id="day8-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Chamomile Tea</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 tablespoon dried chamomile flowers or 1 chamomile tea bag</p>
+                        <p>1 cup water</p>
+                        <p>Optional: honey or lemon for flavor</p>
+                        <h4>Instructions:</h4>
+                        <p>To make chamomile tea, boil water, steep chamomile flowers or a tea bag in a mug, cover and steep for 5 minutes, then remove and sweeten with honey or lemon if desired.</p>
+                        <p>Estimated sugar = 0.0%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Vegetable Lentil Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 tablespoon olive oil</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 carrots, diced</p>
+                        <p>2 celery stalks, diced</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>1 cup dried green or brown lentils, rinsed</p>
+                        <p>4 cups vegetable broth</p>
+                        <p>1 can (14 oz) diced tomatoes, with juices</p>
+                        <p>1 teaspoon dried thyme</p>
+                        <p>1 teaspoon dried oregano</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Fresh parsley, chopped (for garnish, optional)</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Broccoli Detox Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2.5 cups broccoli florets</p>
+                        <p>1 chopped onion</p>
+                        <p>1/2 teaspoon sea salt</p>
+                        <p>2 tablespoons coconut oil</p>
+                        <p>3 chopped celery stalks</p>
+                        <p>2 chopped carrots</p>
+                        <p>1 cup kale or spinach</p>
+                        <p>2 cups vegetable or bone broth</p>
+                        <p>Juice of half a lemon</p>
+                        <p>2 tablespoons collagen (optional)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 9 -->
+        <div class="day">
+            <div class="circle" data-day="day9-details">Day 9</div>
+            <div id="day9-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Vanilla Coffee Coconut Fermented Milk</h4>
+                        <h4>Ingredients</h4>
+                        <p>50ml brewed black coffee, cooled</p>
+                        <p>120ml unsweetened coconut milk</p>
+                        <p>1 teaspoon vanilla extract</p>
+                        <p>Ice cubes</p>
+                        <p>Estimated sugar: 0%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Mushroom Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>500g mushrooms (such as button mushrooms, cremini, or a mix)</p>
+                        <p>1 onion, diced</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>2 tablespoons olive oil</p>
+                        <p>2 cups vegetable broth</p>
+                        <p>1 can (400ml) coconut cream</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Fresh thyme or parsley for garnish (optional)</p>
+                        <p>Estimated fat: 0.24%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Herbal Tea</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cinnamon stick or 1 teaspoon ground cinnamon</p>
+                        <p>1-2 cups boiled water</p>
+                        <p>Optional: honey or lemon for flavor</p>
+                        <p>Estimated percentage of sugars: 1.0% to 2.1%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 10 -->
+        <div class="day">
+            <div class="circle" data-day="day10-details">Day 10</div>
+            <div id="day10-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Vegetable Juice with Protein</h4>
+                        <h4>Ingredints</h4>
+                        <p>2 large carrots, washed and chopped</p>
+                        <p>1 cucumber, washed and chopped</p>
+                        <p>2 celery stalks, washed and chopped</p>
+                        <p>1/2 red bell pepper, washed, seeded, and chopped</p>
+                        <p>1/2 green bell pepper, washed, seeded, and chopped</p>
+                        <p>1 small beet, washed, peeled, and chopped (optional)</p>
+                        <p>1 small piece of ginger, peeled</p>
+                        <p>1 cup water</p>
+                        <p>1 scoop unflavored protein powder</p>
+                        <p>Ice cubes (optional)</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Creamy Kefir with Oats and Strawberries</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup fermented milk (kefir)</p>
+                        <p>1/4 cup rolled oats</p>
+                        <p>4-5 fresh strawberries, sliced</p>
+                        <p>Estimated sugars = 2.3%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Black Bean Soup with Plain Greek Yogurt</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 cans (15 ounces each) black beans, drained and rinsed</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>1 red bell pepper, diced</p>
+                        <p>1 carrot, diced</p>
+                        <p>4 cups vegetable broth</p>
+                        <p>1 teaspoon ground cumin</p>
+                        <p>1 teaspoon chili powder</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Olive oil for sautéing</p>
+                        <p>Plain Greek yogurt for garnish</p>
+                        <p>Fresh cilantro, chopped (optional, for garnish)</p>
+                        <p>Lime wedges (optional, for garnish)</p>
+                        <p>Sauté onions, garlic, red bell pepper, and carrot in olive oil, then simmer with black beans, vegetable broth, cumin, and chili powder, puree until smooth, season, and serve topped with a dollop of plain Greek yogurt.</p>
+                        <p>Estimated fats = 5% to 7%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 11 -->
+        <div class="day">
+            <div class="circle" data-day="day11-details">Day 11</div>
+            <div id="day11-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Peppermint Tea</h4>
+                        <h4>Ingredients</h4>
+                        <p>2 cups of water</p>
+                        <p>2 teaspoons of dried peppermint tea leaves</p>
+                        <p>Optional: honey or stevia for sweetness (if desired)</p>
+                        <p>Boil 2 cups of water, add 2 teaspoons of dried herbal tea leaves, steep for 5-10 minutes, strain, sweeten if desired, and enjoy hot or chilled.</p>
+                        <p>Estimated sugar = 1.04%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Tomatoes, Coconut Milk, and Herbs Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 cans (28 oz each) of whole peeled tomatoes</p>
+                        <p>1 can (14 oz) of full-fat coconut milk</p>
+                        <p>1 tablespoon olive oil</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>1 teaspoon dried basil</p>
+                        <p>1 teaspoon dried oregano</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Fresh basil leaves for garnish (optional)</p>
+                        <p>In a large pot, sauté chopped onion and minced garlic in olive oil, then add canned tomatoes, dried basil, and dried oregano, simmer for 15-20 minutes, puree the mixture until smooth using an immersion blender or regular blender, return to pot, stir in coconut milk, season with salt and pepper, and heat through before serving garnished with fresh basil leaves if desired.</p>
+                        <p>Estimated fats = 0.24%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Bone Broth</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2-3 pounds of bones (such as beef bones, chicken carcasses, or pork bones)</p>
+                        <p>Water (enough to cover the bones in the pot)</p>
+                        <p>2 tablespoons apple cider vinegar (optional, helps extract nutrients from bones)</p>
+                        <p>1 onion, quartered</p>
+                        <p>2 carrots, chopped</p>
+                        <p>2 celery stalks, chopped</p>
+                        <p>3-4 cloves garlic, smashed</p>
+                        <p>1-2 bay leaves</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Optional: any additional herbs or spices you like, such as thyme, rosemary, or parsley</p>
+                        <p>Roast bones, then simmer with water, vinegar, vegetables, and herbs for 8-24 hours, strain, season, and store for a flavorful and nutrient-rich bone broth.</p>
+                        <p>Estimated fats = 0.24%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 12 -->
+        <div class="day">
+            <div class="circle" data-day="day12-details">Day 12</div>
+            <div id="day12-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Fermented Milk Chia Pudding topped with Unsweetened Coconut Flakes</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 cup fermented milk (such as kefir or yogurt)</p>
+                        <p>3 tablespoons chia seeds</p>
+                        <p>Unsweetened coconut flakes for topping</p>
+                        <p>Combine fermented milk and chia seeds, refrigerate for at least 4 hours, then serve topped with unsweetened coconut flakes.</p>
+                        <p>Estimated sugar = 0.24%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Spinach and Avocado Soup with Hemp Hearts</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 ripe avocados, peeled and pitted</p>
+                        <p>2 cups fresh spinach leaves</p>
+                        <p>3 cups vegetable broth</p>
+                        <p>1 small onion, diced</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>1 tablespoon olive oil</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Hemp hearts for garnish</p>
+                        <p>Blend sautéed onions, garlic, spinach, avocados, and vegetable broth until smooth, season with salt and pepper, and serve garnished with hemp hearts.</p>
+                        <p>Estimated fat = 6.125%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Creamy Mushroom Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>500g (about 1 pound) mushrooms, sliced</p>
+                        <p>1 onion, diced</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>4 cups vegetable broth</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Fresh thyme leaves for garnish (optional)</p>
+                        <p>Sauté diced onion, minced garlic, and sliced mushrooms in vegetable broth until tender, blend until creamy, season, reheat if needed, and serve garnished with thyme leaves.</p>
+                        <p>Estimated fat = 0.24%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 13 -->
+        <div class="day">
+            <div class="circle" data-day="day13-details">Day 13</div>
+            <div id="day13-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Pineapple Lime Spinach Smoothie</h4>
+                        <h>Ingredients</h>
+                        <p>1 cup fresh pineapple chunks</p>
+                        <p>Juice of 1 lime</p>
+                        <p>1 cup fresh spinach leaves</p>
+                        <p>1 cup fermented milk (such as kefir or yogurt)</p>
+                        <p>Honey or stevia (optional, for sweetness)</p>
+                        <p>Ice cubes (optional)</p>
+                        <p>Blend all the ingredients until smooth and creamy.</p>
+                        <p>Estimated sugars = 37 to 40 grams</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Meatball Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 pound extra lean ground turkey or chicken</p>
+                        <p>1/2 cup whole grain breadcrumbs</p>
+                        <p>1/4 cup grated Parmesan cheese (optional for flavor)</p>
+                        <p>1 egg white</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>1 teaspoon dried Italian herbs (such as oregano, basil, or parsley)</p>
+                        <p>Salt and pepper to taste</p>
+                        <h4>Instructions</h4>
+                        <p>1 tablespoon olive oil (optional; omit if desired)</p>
+                        <p>1 onion, diced</p>
+                        <p>2 carrots, peeled and diced</p>
+                        <p>2 stalks celery, diced</p>
+                        <p>4 cups low-sodium vegetable broth</p>
+                        <p>1 can (14.5 ounces) no-salt-added diced tomatoes</p>
+                        <p>1 teaspoon dried thyme</p>
+                        <p>1 teaspoon dried rosemary</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>2 cups chopped spinach or kale</p>
+                        <p>Fresh parsley for garnish</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Fermented Milk</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup fermented milk (kefir/plain yogurt)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 14 -->
+        <div class="day">
+            <div class="circle" data-day="day14-details">Day 14</div>
+            <div id="day14-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: protein and spinach smoothie</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 cup unsweetened almond milk</p>
+                        <p>1/2 cup silken tofu (for creaminess and added protein)</p>
+                        <p>1 tablespoon natural almond butter or peanut butter (unsweetened)</p>
+                        <p>1 scoop of plant-based protein powder (choose a brand with no added sugars)</p>
+                        <p>1/2 frozen banana (optional, for creaminess, omit if you want to avoid sugars completely)</p>
+                        <p>1/2 cup spinach or kale (for added nutrients)</p>
+                        <p>1/2 teaspoon cinnamon (optional, for flavor)</p>
+                        <p>Ice cubes (optional, for thickness)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend until smooth and creamy.</p>
+                        <p>Estimated Sugar Content:If you choose to include the banana, the sugar content would be around 7-8 grams per serving. </p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Noodles Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <li>4 cups vegetable broth (low-sodium if possible)</li>
+                        <li>1 cup water</li>
+                        <li>1 cup chopped mixed vegetables (carrots, celery, bell peppers, mushrooms, etc.)</li>
+                        <li>1 tablespoon grated ginger</li>
+                        <li>2 garlic cloves, minced</li>
+                        <li>2 tablespoons low-sodium soy sauce or tamari</li>
+                        <p>2 servings of shirataki noodles (or any other low-calorie, low-carb noodles of your choice)</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Optional toppings: sliced green onions, chopped cilantro,a squeeze of lime juice</p>
+                        <h4>Instruction</h4>
+                        <p>Simmer mixed vegetables, ginger, garlic, and low-sodium soy sauce in vegetable broth, add cooked shirataki noodles, and season before serving with optional toppings.</p>
+                        <p>Total: Approximately 70 calories and 1 gram of fat per serving of noodle soup.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Cabbage Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 large sweet onion, finely chopped</p>
+                        <p>2-3 fresh garlic cloves, minced or pressed</p>
+                        <p>2 large carrots, peeled & shredded</p>
+                        <p>1 large parsnip, peeled & shredded</p>
+                        <p>3 large celery stalks, sliced</p>
+                        <p>2 red bell peppers, diced</p>
+                        <p>1/2 small cabbage, chopped or shredded</p>
+                        <p>2 cups (fresh or frozen) green beans, halved into bite-sized pieces</p>
+                        <p>Vegetable broth (enough to cover the vegetables)</p>
+                        <p>Sea salt and fresh ground black pepper, to your taste</p>
+                        <p>A handful of fresh parsley, chopped</p>
+                        <h4>Instruction</h4>
+                        <p>Sauté chopped onion and minced garlic in water until softened, add shredded carrots, parsnip, sliced celery, diced red bell peppers, chopped cabbage, halved green beans, cover with vegetable broth, season with salt and pepper, simmer until vegetables are tender, stir in chopped parsley, and serve hot.</p>
+                        <p>Estimated: No fats and 353 calories.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 15 -->
+        <div class="day">
+            <div class="circle" data-day="day15-details">Day 15</div>
+            <div id="day15-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Instant Coffee Weight Loss Drink</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 teaspoon instant coffee powder or 1 cup of freshly brewed black coffee</p>
+                        <p>1 cup hot water</p>
+                        <p>1 tablespoon coconut oil or MCT oil</p>
+                        <p>1 teaspoon cinnamon</p>
+                        <p>Optional: stevia or another non-caloric sweetener to taste</p>
+                        <h4>Instructions</h4>
+                        <p>Combine instant coffee/Brew a cup of black coffee using your preferred method, hot water, coconut oil, cinnamon, and optional sweetener in a blender, blend until frothy, then enjoy your weight-loss-supporting beverage.</p>
+                        <p>Estimated: 0 sugars</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Probiotics Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <li>1 liter water</li>
+                        <li>2 lemons</li>
+                        <li>1-inch grated ginger</li>
+                        <li>½ tsp pepper</li>
+                        <li>1 tsp honey</li>
+                        <li>1 cup fermented milk (such as kefir or yogurt)</li>
+                        <h4>Instructions</h4>
+                        <p>Combine 1 liter of water, fermented milk, lemon juice, grated ginger, pepper, and honey in a pitcher, stir well, chill for 30 minutes, then serve over ice if desired for a refreshing and probiotic-rich beverage.</p>
+                        <p>Estimated sugar = 5.7 grams</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Chicken Legs Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <li>4 chicken legs (skin removed)</li>
+                        <li>6 cups of low-sodium chicken broth</li>
+                        <li>2 carrots, peeled and chopped</li>
+                        <li>2 celery stalks, chopped</li>
+                        <li>1 onion, chopped</li>
+                        <li>2 cloves of garlic, minced</li>
+                        <li>1 teaspoon dried thyme</li>
+                        <li>1 teaspoon dried rosemary</li>
+                        <li>Salt and pepper to taste</li>
+                        <li>Fresh parsley for garnish (optional)</li>
+                        <h4>Instructions</h4>
+                        <p>Simmer chicken legs with vegetables, herbs, and broth until cooked, shred chicken, season, and serve hot.</p>
+                        <p>Estimated: Approximately 250-300 calories and 8-12 grams of fat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 16 -->
+        <div class="day">
+            <div class="circle" data-day="day16-details">Day 16</div>
+            <div id="day16-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Spicy Immune Boost Tonic</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 tablespoon honey</p>
+                        <p>1 small piece of ginger (about 1 inch),pealed and chopped</p>
+                        <p>1/2 teapoon cumin</p>
+                        <p>1/4 teaspoon cayenne pepper</p>
+                        <p>1/4 teaspoon black pepper</p>
+                        <p>juice of 1 lemon</p>
+                        <p>1 teaspoon apple cider vinegar</p>
+                        <p>1 cup of water</p>
+                        <p>1/2 inch piece of ginger,peeled and chopped</p>
+                        <p>1/2 inch piece of tumeric,peeled and chopped</p>
+                        <p>1/4 teaspoon black pepper</p>
+                        <p>1/4 teaspoon cayenne pepper</p>
+                        <h4>Instructions</h4>
+                        <p>Blend honey, ginger, cumin, cayenne pepper, black pepper, lemon juice, apple cider vinegar, and water, then simmer with additional ginger, turmeric, black pepper, and cayenne pepper for 10 minutes before straining and serving.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Veg Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup dried lentils (any variety you prefer), rinsed and drained</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 carrots, diced</p>
+                        <p>2 celery stalks, diced</p>
+                        <p>3 cloves garlic, minced</p>
+                        <p>1 can (14 oz) diced tomatoes (no salt added)</p>
+                        <p>4 cups vegetable or chicken broth (low sodium)</p>
+                        <p>2 cup of water</p>
+                        <p>1 teaspoon ground cumin</p>
+                        <p>1/2 teaspoon smoked paprika</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>2 tablespoons olive oil</p>
+                        <p>Fresh parsley or cilantro for garnish (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>Combine rinsed lentils, onion, carrots, celery, garlic, tomatoes, broth, water, cumin, coriander, smoked paprika, salt, and pepper in a pot, simmer for 20-25 minutes, then adjust seasoning and serve hot, optionally garnished with parsley or cilantro.</p> 
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Dandelion Root Tea</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1-2 teaspoons dried dandelion root (organic if possible)</p>
+                        <p>1 cup of water</p>
+                        <p>Optional: lemon wedges, honey, or other sweeteners to taste</p>
+                        <h4>Instructions</h4>
+                        <p>Steep 1-2 teaspoons of dried dandelion root in 1 cup of boiling water for 5-10 minutes, strain, and optionally add lemon or honey to taste before enjoying warm.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 17 -->
+        <div class="day">
+            <div class="circle" data-day="day17-details">Day 17</div>
+            <div id="day17-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Japanese Water Drink Recipe</h4>
+                        <h4>Ingredients</h4>
+                        <p>6 cups (40 oz) cold water</p>
+                        <p>1 inch ginger root, peeled and thinly sliced</p>
+                        <p>2 lemons, thinly sliced</p>
+                        <p>1 teaspoon cinnamon powder</p>
+                        <p>1 teaspoon organic honey (optional, for sweetness)</p>
+                        <h4>Instructions</h4>
+                        <p>Estimated sugar: 0.20%</p>
+                        <p>Combine cold water, sliced ginger, lemon, cinnamon in a pitcher, refrigerate for 2-4 hours, add honey if desired, serve over ice.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Black Bean Soup Recipe</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 tablespoons extra-virgin olive oil</p>
+                        <p>1 medium red onion, finely chopped</p>
+                        <p>2 cloves garlic, crushed</p>
+                        <p>1 tablespoon jalapeños, chopped</p>
+                        <p>1 tablespoon tomato paste</p>
+                        <p>Salt, to taste</p>
+                        <p>Freshly ground black pepper, to taste</p>
+                        <p>1 teaspoon chili powder</p>
+                        <p>1/2 teaspoon cumin</p>
+                        <p>3 cans (15 ounces each) black beans, undrained</p>
+                        <p>1 liter low-sodium chicken or vegetable stock</p>
+                        <p>1 bay leaf</p>
+                        <p>Sour cream, for garnish (optional)</p>
+                        <p>Sliced avocado, for garnish</p>
+                        <p>Chopped fresh coriander, for garnish</p>
+                        <p>Lime wedges, for serving (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>Estimated: 200-300 calories per serving, and 45 grams of fat.</p>
+                        <p>Heat olive oil, sauté onion, garlic, jalapeños with tomato paste, season with salt, pepper, chili powder, cumin, add black beans, stock, bay leaf, simmer, blend until smooth, adjust seasoning, serve garnished with sour cream, avocado, coriander, and lime wedges.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Fermented Milk</h4>
+                        <h4>Ingredients:</h4>
+                        <p>Fermented milk/Keffir/natural Yoghurt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 18 -->
+        <div class="day">
+            <div class="circle" data-day="day18-details">Day 18</div>
+            <div id="day18-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Zero-Sugar Breakfast Smoothie with Fermented Milk</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <p>1/2 cup frozen mixed berries (such as strawberries, blueberries, raspberries)</p>
+                        <p>1/2 avocado</p>
+                        <p>1 tablespoon chia seeds</p>
+                        <p>1 scoop unflavored or vanilla protein powder (ensure it has no added sugars)</p>
+                        <p>Handful of spinach or kale (optional)</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend on high speed until smooth and creamy.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: High Protein Butternut Squash Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <li>1 Butternut squash (about 3-3.5 lbs), large</li>
+                        <li>3 Garlic cloves</li>
+                        <li>1 tsp Sage</li>
+                        <li>1 Shallot</li>
+                        <li>1 tsp Thyme, dried</li>
+                        <li>4 cups Bone broth</li>
+                        <li>1 tbsp Honey</li>
+                        <li>1/2 tsp Black pepper</li>
+                        <li>1/4 tsp Nutmeg, ground</li>
+                        <li>1 tsp Salt</li>
+                        <li>1/2 tbsp Olive oil</li>
+                        <li>1/8 tsp Cumin</li>
+                        <li>3/4 cup Curd cottage cheese, small</li>
+                        <h4>Instructions</h4>
+                        <p>Preheat oven to 400°F, roast halved butternut squash until tender, then sauté diced shallot and garlic in a pot, add roasted squash, sage, thyme, cumin, honey, bone broth, simmer for 15-20 minutes, blend until smooth, season to taste, serve hot garnished with small curd cottage cheese.</p>
+                        <p>Fats in the soup = 17.1%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Vegetable Broth</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 cups vegetable broth (homemade or store-bought)</p>
+                        <p>1 small carrot, thinly sliced</p>
+                        <p>1 small celery stalk, thinly sliced</p>
+                        <p>1/2 cup broccoli florets, chopped into small pieces</p>
+                        <p>1/2 cup firm tofu, diced (optional)</p>
+                        <p>1 green onion, thinly sliced (for garnish)</p>
+                        <p>1 teaspoon soy sauce or tamari (optional, for flavor)</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Fresh herbs such as parsley or cilantro, chopped (optional, for garnish)</p>
+                        <h4>Instructions</h4>
+                        <p>Simmer vegetable broth with sliced carrot and celery, adding tofu and broccoli until tender, season with soy sauce and salt, then garnish with green onions and fresh herbs before serving.</p>
+                        <p>Fats = 0.20%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 19 -->
+        <div class="day">
+            <div class="circle" data-day="day19-details">Day 19</div>
+            <div id="day19-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Green Tea</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 teaspoon green tea leaves or 1 green tea bag</p>
+                        <p>1 teaspoon grated ginger</p>
+                        <p>1 teaspoon lemon juice</p>
+                        <p>1 teaspoon honey (optional, for sweetness)</p>
+                        <p>1 cup hot water</p>
+                        <h4>Instructions</h4>
+                        <p>Steep green tea leaves and grated ginger in hot water for 3-5 minutes, then add lemon juice and honey for flavor, enjoy while warm as a weight-loss tea.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Vegetable and Lentil Weight-Loss Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 tablespoon olive oil</p>
+                        <p>1 onion, diced</p>
+                        <p>2 carrots, diced</p>
+                        <p>2 celery stalks, diced</p>
+                        <p>3 cloves garlic, minced</p>
+                        <p>1 teaspoon ground cumin</p>
+                        <p>1 teaspoon ground turmeric</p>
+                        <p>1/2 teaspoon smoked paprika</p>
+                        <p>1 cup dried green or brown lentils, rinsed and drained</p>
+                        <p>6 cups vegetable broth (low-sodium)</p>
+                        <p>1 can (14 oz) diced tomatoes, with juices</p>
+                        <p>2 cups chopped kale or spinach</p>
+                        <p>Salt and pepper, to taste</p>
+                        <p>Fresh herbs (such as parsley or cilantro), for garnish (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>Heat olive oil, sauté onion, carrots, celery, and garlic, add cumin, turmeric, smoked paprika, lentils, vegetable broth, and diced tomatoes, simmer until lentils are tender, stir in kale or spinach, season with salt and pepper, garnish with fresh herbs if desired, serve hot.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Vegetable Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <li>1 tablespoon olive oil</li>
+                        <li>1 onion, diced</li>
+                        <li>2 carrots, diced</li>
+                        <li>2 celery stalks, diced</li>
+                        <li>3 cloves garlic, minced</li>
+                        <li>1 teaspoon dried thyme</li>
+                        <li>1 teaspoon dried oregano</li>
+                        <li>1/2 teaspoon smoked paprika</li>
+                        <li>1 cup quinoa, rinsed</li>
+                        <li>6 cups vegetable broth</li>
+                        <li>2 cups diced tomatoes (fresh or canned)</li>
+                        <li>2 cups chopped spinach or kale</li>
+                        <li>Salt and pepper to taste</li>
+                        <li>Fresh parsley, chopped (for garnish, optional)</li>
+                        <h4>Instructions</h4>
+                        <p>Heat olive oil, sauté onion, carrots, celery, and garlic until softened, add thyme, oregano, paprika, quinoa, broth, and tomatoes, simmer until quinoa is cooked, stir in spinach or kale, season with salt and pepper, garnish with parsley, serve hot.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 20 -->
+        <div class="day">
+            <div class="circle" data-day="day20-details">Day 20</div>
+            <div id="day20-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Black Coffee</h4>
+                        <h4>Ingredients</h4>
+                        <li>1 cup brewed black coffee</li>
+                        <li>1 teaspoon coconut oil or MCT oil</li>
+                        <li>1/2 teaspoon ground cinnamon</li>
+                        <li>1/4 teaspoon ground turmeric</li>
+                        <li>Optional: 1 teaspoon honey or stevia for sweetness (optional, adjust to taste)</li>
+                        <h4>Instructions</h4>
+                        <p>Brew black coffee, blend with coconut oil, ground cinnamon, ground turmeric, and optional sweetener, then enjoy as a metabolism-boosting weight-loss coffee.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Creamy Tomato Soup Recipe</h4>
+                        <h4>Ingredients:</h4>
+                        <p>4 cups pureed tomatoes (fresh or canned)</p>
+                        <p>1 onion, chopped</p>
+                        <p>3 cloves garlic, minced</p>
+                        <p>2 tablespoons olive oil</p>
+                        <p>2 cups vegetable broth</p>
+                        <p>1 cup coconut milk (unsweetened, from a can)</p>
+                        <p>1 teaspoon dried basil</p>
+                        <p>1 teaspoon dried oregano</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Fresh basil leaves, for garnish (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>Sauté chopped onion and minced garlic in olive oil, add pureed tomatoes and vegetable broth, simmer with dried basil and oregano, blend until smooth, stir in coconut milk, simmer for additional 5 minutes, season to taste, serve hot garnished with fresh basil leaves if desired.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Banana Berry Fermented Milk Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 ripe banana, peeled and sliced</p>
+                        <p>1/2 cup mixed berries (such as strawberries, blueberries, raspberries)</p>
+                        <p>1 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <p>1 tablespoon chia seeds (optional, for added nutrition)</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                        <h4>Instructions</h4>
+                        <p>Total: Approximately 28-35 grams of natural sugars</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 21 -->
+        <div class="day">
+            <div class="circle" data-day="day21-details">Day 21</div>
+            <div id="day21-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Bulletproof Coffee</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 cup brewed coffee</p>
+                        <p>1 tablespoon unsalted grass-fed butter or ghee</p>
+                        <p>1 tablespoon MCT oil or coconut oil</p>
+                        <h4>Instructions</h4>
+                        <p>Blend brewed coffee with unsalted grass-fed butter or ghee and MCT oil or coconut oil until frothy, then serve immediately as Bulletproof Coffee.</p>
+                        <p>Sugars: 0.02%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Pineapple Smoothie with Fermented Milk</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <p>1/2 cup pineapple chunks (fresh or frozen)</p>
+                        <p>1/2 cup spinach leaves</p>
+                        <p>1/2 cup coconut water (or unsweetened coconut milk)</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend on high speed until smooth and creamy.</p>
+                        <p>Sugars: 16 grams</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Spinach and White Bean Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 tablespoon olive oil</p>
+                        <p>1 onion, diced</p>
+                        <p>3 cloves garlic, minced</p>
+                        <p>2 carrots, diced</p>
+                        <p>2 celery stalks, diced</p>
+                        <p>4 cups vegetable broth</p>
+                        <p>2 cans (15 oz each) white beans (such as cannellini beans), drained and rinsed</p>
+                        <p>1 can (14 oz) diced tomatoes</p>
+                        <p>4 cups fresh spinach leaves, roughly chopped</p>
+                        <p>1 teaspoon dried thyme</p>
+                        <p>1 teaspoon dried oregano</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Freshly grated Parmesan cheese, for serving (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>In a large pot, sauté diced onion, minced garlic, carrots, and celery in olive oil until softened, then add vegetable broth, white beans, diced tomatoes, dried thyme, and dried oregano, simmer for 15-20 minutes, stir in chopped spinach, season with salt and pepper, serve hot, optionally garnish with Parmesan cheese.</p>
+                        <p>Fats: 21.5 grams</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 22 -->
+        <div class="day">
+            <div class="circle" data-day="day22-details">Day 22</div>
+            <div id="day22-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Matcha Latte</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 teaspoon matcha powder</p>
+                        <p>1 tablespoon hot water (not boiling)</p>
+                        <p>1 cup unsweetened almond milk (or any milk of your choice)</p>
+                        <p>Optional: Sweetener of your choice (such as honey, maple syrup, or stevia)</p>
+                        <p>Optional: Vanilla extract or almond extract for flavor</p>
+                        <h4>Instructions</h4>
+                        <p>Whisk matcha powder with hot water, froth almond milk, combine matcha paste with frothed milk, sweeten and flavor to taste, serve hot as a Matcha Latte.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Mango Coconut Smoothie with Fermented Milk</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 ripe mango, peeled and diced</p>
+                        <p>1/2 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <p>1/2 cup coconut water</p>
+                        <p>1 tablespoon honey or maple syrup (optional, for sweetness)</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend diced mango, fermented milk, coconut water, and optional sweetener until smooth, serve immediately for a Mango Coconut Smoothie.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Thai Coconut Curry Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>4 cups vegetable broth (low sodium)</p>
+                        <p>1 can (14 oz) light coconut milk (unsweetened)</p>
+                        <p>1 tablespoon Thai red curry paste (ensure it's fat-free)</p>
+                        <p>2 cups mixed vegetables (such as bell peppers, broccoli, and carrots), chopped</p>
+                        <p>1 cup tofu, cubed (optional for protein)</p>
+                        <p>1 tablespoon fresh lime juice</p>
+                        <p>1 tablespoon soy sauce (low sodium)</p>
+                        <p>Fresh cilantro, for garnish (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>Combine vegetable broth, light coconut milk, Thai red curry paste, mixed vegetables, tofu (optional), lime juice, and soy sauce in a pot, simmer until vegetables are tender, garnish with fresh cilantro, and serve hot for a Thai Coconut Curry Soup with 0 fats.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 23 -->
+        <div class="day">
+            <div class="circle" data-day="day23-details">Day 23</div>
+            <div id="day23-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Turmeric Golden Milk Latte</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 cup unsweetened almond milk (or any milk of your choice)</p>
+                        <p>1 teaspoon ground turmeric</p>
+                        <p>1/2 teaspoon ground cinnamon</p>
+                        <p>1/4 teaspoon ground ginger</p>
+                        <p>1/8 teaspoon ground black pepper (helps with turmeric absorption)</p>
+                        <p>Pinch of ground nutmeg (optional, for garnish)</p>
+                        <h4>Instructions</h4>
+                        <p>Heat almond milk with ground turmeric, cinnamon, ginger, and black pepper, add optional honey or maple syrup and vanilla extract, stir well, garnish with nutmeg, and serve for a comforting Turmeric Golden Milk Latte.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Superfood Green Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup spinach</p>
+                        <p>1 cup kale</p>
+                        <p>1/2 avocado</p>
+                        <p>1 green apple, cored and chopped</p>
+                        <p>1 tablespoon chia seeds</p>
+                        <p>1 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <p>1/2 cup coconut water</p>
+                        <h4>Instructions</h4>
+                        <p>Blend spinach, kale, avocado, green apple, chia seeds, fermented milk, and coconut water until smooth, then serve for a Superfood Green Smoothie rich in antioxidants and probiotics.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Minestrone Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 tablespoon olive oil</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>2 carrots, diced</p>
+                        <p>2 celery stalks, diced</p>
+                        <p>1 zucchini, diced</p>
+                        <p>1 can (14 oz) diced tomatoes</p>
+                        <p>4 cups vegetable broth</p>
+                        <p>1 can (15 oz) cannellini beans, drained and rinsed</p>
+                        <p>1 cup small pasta (such as ditalini or small shells)</p>
+                        <p>2 cups chopped spinach or kale</p>
+                        <p>1 teaspoon dried oregano</p>
+                        <p>1 teaspoon dried basil</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Grated Parmesan cheese for serving (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>In a large pot, sauté onion, garlic, carrots, celery, and zucchini, add diced tomatoes, vegetable broth, cannellini beans, pasta, dried herbs, simmer until pasta is cooked, stir in spinach or kale, season with salt and pepper, serve hot optionally topped with Parmesan cheese.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 24 -->
+        <div class="day">
+            <div class="circle" data-day="day24-details">Day 24</div>
+            <div id="day24-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Ginger Powder Tea</h4>
+                        <h4>Ingredients</h4>
+                        <p>1/2 teaspoon dry ginger powder</p>
+                        <p>1/2 teaspoon black cumin (jeera) powder</p>
+                        <p>1 teaspoon turmeric powder</p>
+                        <p>1/2 lemon, juiced</p>
+                        <h4>Instructions</h4>
+                        <p>Mix 1/2 teaspoon each of dry ginger powder, black cumin (jeera) powder, and turmeric powder with juice from half a lemon in warm water, stir well, and optionally sweeten before drinking for a health-boosting beverage.</p>
+                        <p>Approximately sugars = 0.20 grams</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Citrus Sunshine Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 orange, peeled and segmented</p>
+                        <p>1 cup pineapple chunks (fresh or frozen)</p>
+                        <p>1/2 banana</p>
+                        <p>1/2 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <p>1/2 cup coconut water</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend orange segments, pineapple chunks, banana, fermented milk, coconut water, and optional ice cubes until smooth, adjusting sweetness if desired, then serve immediately for a refreshing Citrus Sunshine Smoothie with 0% added sugars.</p>
+                        <p>Sugar approximately 12.75 grams.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Broccoli Cheddar Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 tablespoons butter</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>3 cups chopped broccoli florets</p>
+                        <p>3 cups vegetable or chicken broth</p>
+                        <p>1 cup milk (or half-and-half for a creamier soup)</p>
+                        <p>1/4 cup all-purpose flour</p>
+                        <p>2 cups shredded cheddar cheese</p>
+                        <p>Salt and pepper to taste</p>
+                        <h4>Instructions</h4>
+                        <p>Melt butter, sauté onion and garlic, add broccoli and broth, simmer until tender, whisk in milk and flour mixture, stir in cheddar cheese, season, and serve hot for a comforting Broccoli Cheddar Soup.</p>
+                        <p>Fats approximately 15.6 grams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 25 -->
+        <div class="day">
+            <div class="circle" data-day="day25-details">Day 25</div>
+            <div id="day25-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Apple Lime Overnight Oats and Chia Pudding with Cinnamon</h4>
+                        <h4>Ingredients</h4>
+                        <li>2 teaspoons whole oats, soaked overnight</li>
+                        <li>2 teaspoons chia seeds</li>
+                        <li>Juice from 1 lime</li>
+                        <li>1 apple, diced</li>
+                        <li>1/2 teaspoon cinnamon powder</li>
+                        <h4>Instructions</h4>
+                        <p>Combine 2 teaspoons of overnight-soaked whole oats, 2 teaspoons of chia seeds, juice of 1 lime, chopped apple, and 1/2 teaspoon of cinnamon powder, stir well, then blend until smooth for a nutritious breakfast or snack.</p>
+                        <p>Approximately sugars: 0.20 grams</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Peachy Green Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 ripe peach, pitted and chopped</p>
+                        <p>1 cup spinach leaves</p>
+                        <p>1/2 banana</p>
+                        <p>1/2 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <p>1/2 cup water or coconut water</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                        <h4>Instructions</h4>
+                        <p>Combine chopped peach, spinach leaves, banana, fermented milk, and water or coconut water in a blender, blend until smooth, optionally add ice cubes for a colder smoothie, then serve immediately for a zero-sugar Peachy Green Smoothie.</p>
+                        <p>Approximately 7.5% sugars.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Vegetable Broth Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>4 cups vegetable broth (low sodium)</p>
+                        <p>2 carrots, diced</p>
+                        <p>2 celery stalks, diced</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>1 cup chopped spinach or kale</p>
+                        <p>1 cup diced tomatoes (fresh or canned)</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Herbs and spices of your choice (such as thyme, oregano, or parsley)</p>
+                        <h4>Instructions</h4>
+                        <p>Simmer diced carrots, celery, onion, garlic, spinach or kale, and diced tomatoes in vegetable broth with herbs and spices until tender, season with salt and pepper, then serve hot for a zero-fat Vegetable Broth Soup.</p>
+                        <p>Approximately zero fats.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 26 -->
+        <div class="day">
+            <div class="circle" data-day="day26-details">Day 26</div>
+            <div id="day26-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Mixed Greens Juice</h4>
+                        <h4>Ingredients</h4>
+                        <p>4 cups mixed greens (kale, spinach, Swiss chard)</p>
+                        <p>2 celery stalks</p>
+                        <p>1 cucumber</p>
+                        <p>6 apples</p>
+                        <p>Juice of 1 lemon</p>
+                        <p>2 inches ginger</p>
+                        <p>A handful of parsley</p>
+                        <h4>Instructions</h4>
+                        <p>Juice 4 cups mixed greens, 2 celery stalks, 1 cucumber, 6 apples, 1 lemon, 2 inches ginger, and a handful of parsley in a juicer, then serve immediately for a refreshing and nutritious green juice.</p>
+                        <p>Sugars: Zero</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Flaxseed and Chia Seed Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 tablespoons flaxseeds</p>
+                        <p>2 tablespoons chia seeds</p>
+                        <p>Water (for soaking)</p>
+                        <p>1/2 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <h4>Instructions</h4>
+                        <p>Combine flaxseeds and chia seeds with water for soaking, then blend with fermented milk until smooth for a nutritious smoothie.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Black Bean Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 cans (15 oz each) black beans, drained and rinsed</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>2 carrots, diced</p>
+                        <p>2 celery stalks, diced</p>
+                        <p>1 bell pepper (any color), diced</p>
+                        <p>4 cups vegetable or chicken broth</p>
+                        <p>1 can (14.5 oz) diced tomatoes</p>
+                        <p>1 teaspoon ground cumin</p>
+                        <p>1 teaspoon chili powder</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Optional toppings: chopped cilantro, diced avocado, lime wedges, sour cream or plain yogurt</p>
+                        <h4>Instructions</h4>
+                        <p>Combine black beans, onion, garlic, carrots, celery, bell pepper, broth, diced tomatoes, cumin, and chili powder in a pot, simmer until vegetables are tender, season with salt and pepper, then optionally blend a portion of the soup for thickness, and serve hot with optional toppings.</p>
+                        <p>Fats Percentage: 0.33%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 27 -->
+        <div class="day">
+            <div class="circle" data-day="day27-details">Day 27</div>
+            <div id="day27-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Mango Coconut Smoothie</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 ripe mango, peeled and diced</p>
+                        <p>1/2 cup unsweetened coconut milk (or coconut water for a lighter option)</p>
+                        <p>1 cup fermented milk (plain yogurt)</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend all the ingredients until smooth and creamy.</p>
+                        <p>Approximate Sugar: 2.5%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Pea and Pumpkin Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>2 cups fresh or frozen peas</p>
+                        <p>2 cups diced pumpkin or butternut squash</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>4 cups vegetable or chicken broth</p>
+                        <p>1 teaspoon ground cumin</p>
+                        <p>1/2 teaspoon ground coriander</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Olive oil for sautéing</p>
+                        <p>Optional toppings: fresh herbs, pumpkin seeds, a dollop of yogurt or cream</p>
+                        <h4>Instructions</h4>
+                        <p>Sauté onion and garlic in olive oil, add pumpkin, peas, broth, cumin, and coriander, simmer until vegetables are tender, blend until smooth, season, and serve hot for a comforting Pea and Pumpkin Soup.</p>
+                        <p>Fat: Approximately 9.33%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Chai Masala Tea</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 lime</p>
+                        <p>2 apples</p>
+                        <p>1 pineapple</p>
+                        <p>3 cups kale</p>
+                        <p>2-3 inches ginger</p>
+                        <h4>Instructions</h4>
+                        <p>To make Chai Masala Tea, lightly toast ginger, cloves, cinnamon, black pepper, and nutmeg, then steep the spices in boiling water, strain, and enjoy the detoxifying and aromatic blend.</p>
+                        <p>Sugars: Approximately 0.20%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 28 -->
+        <div class="day">
+            <div class="circle" data-day="day28-details">Day 28</div>
+            <div id="day28-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Papaya Juice</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 ripe pawpaw (papaya), peeled, deseeded, and chopped</p>
+                        <p>1-inch piece of fresh ginger, peeled and sliced</p>
+                        <p>Juice of 1 lemon</p>
+                        <p>Water or coconut water (optional, for blending)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend all the ingredients until smooth.</p>
+                        <p>Sugar Percentage: 3.5%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Green Ginger Chia</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 tablespoon chia seeds</p>
+                        <p>1 apple, cored and chopped</p>
+                        <p>1/2 cucumber, chopped</p>
+                        <p>1 cup spinach leaves</p>
+                        <p>1/2 cup fermented milk (such as kefir or plain yogurt)</p>
+                        <p>1-inch piece of fresh ginger, peeled and grated</p>
+                        <p>1/2 cup coconut water</p>
+                        <p>Ice cubes (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend all the ingredients until smooth and well combined.</p>
+                        <p>Sugars Approximately: 5.2%</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Fermented milk</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup of fermented milk</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Day 29 -->
+        <div class="day">
+            <div class="circle" data-day="day29-details">Day 29</div>
+            <div id="day29-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Morning Herbal Tea</h4>
+                        <h4>Ingredients</h4>
+                        <p>1 teaspoon loose leaf herbal tea (such as chamomile, peppermint, or ginger)</p>
+                        <p>1 cup water</p>
+                        <p>Optional: honey or lemon for sweetness</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Berry Blast Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 cup mixed berries (such as strawberries, blueberries, raspberries)</p>
+                        <p>1 banana, peeled and sliced</p>
+                        <p>1 cup spinach leaves</p>
+                        <p>1 tablespoon chia seeds</p>
+                        <p>1 cup fermented milk (or natural yogurt)</p>
+                        <p>Ice cubes (optional)</p>
+                        <h4>Instructions</h4>
+                        <p>Blend mixed berries, banana, spinach, Greek yogurt, chia seeds, and almond milk until smooth, then serve immediately for a refreshing and nutritious smoothie.</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Broccoli and Cheddar Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>4 cups broccoli florets</p>
+                        <p>1 onion, chopped</p>
+                        <p>2 cloves garlic, minced</p>
+                        <p>4 cups vegetable or chicken broth</p>
+                        <p>1 cup shredded cheddar cheese</p>
+                        <p>1 cup milk (or dairy-free alternative)</p>
+                        <p>2 tablespoons butter or olive oil</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Optional toppings: extra shredded cheddar, chopped green onions</p>
+                        <h4>Instructions</h4>
+                        <p>Blend sautéed onion, garlic, broccoli florets, and broth until smooth, then stir in milk and cheddar cheese until melted, season, and serve hot with optional toppings.</p>
+                        <p>Fat Percentage: 8.5%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Day 30 -->
+        <div class="day">
+            <div class="circle" data-day="day30-details">Day 30</div>
+            <div id="day30-details" class="details">
+                <div class="meal">
+                    Morning
+                    <div class="recipe">
+                        <h4>Morning Smoothie Recipe: Homemade Fermented Milk</h4>
+                        <h4>Ingredients</h4>
+                        <p>4 cups milk (whole milk, 2%, or skim milk)</p>
+                        <p>2 tablespoons plain yogurt with live active cultures (or kefir grains for kefir)</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Lunch
+                    <div class="recipe">
+                        <h4>Lunch Recipe: Pawpaw Smoothie</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 ripe pawpaw (papaya), peeled, deseeded, and chopped</p>
+                        <p>1 banana, peeled and sliced</p>
+                        <p>1/2 cup plain Greek yogurt (or dairy-free alternative)</p>
+                        <p>1/2 cup coconut water (or water)</p>
+                        <p>1 tablespoon honey (optional, for sweetness)</p>
+                        <p>Ice cubes (optional, for a colder smoothie)</p>
+                    </div>
+                </div>
+                <div class="meal">
+                    Dinner
+                    <div class="recipe">
+                        <h4>Dinner Recipe: Cabbage Soup</h4>
+                        <h4>Ingredients:</h4>
+                        <p>1 head cabbage, shredded</p>
+                        <p>2 onions, chopped</p>
+                        <p>2 carrots, diced</p>
+                        <p>2 celery stalks, chopped</p>
+                        <p>4 cloves garlic, minced</p>
+                        <p>1 can (14 oz) diced tomatoes</p>
+                        <p>6 cups vegetable broth</p>
+                        <p>1 teaspoon dried thyme</p>
+                        <p>1 teaspoon dried oregano</p>
+                        <p>Salt and pepper to taste</p>
+                        <p>Optional: chopped parsley for garnish</p>
+                        <h4>Instructions</h4>
+                        <p>Combine shredded cabbage, onions, carrots, celery, garlic, diced tomatoes, vegetable broth, and herbs in a pot. Simmer until vegetables are tender, season to taste, and serve hot. Optionally, garnish with chopped parsley.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function toggleDetails(id) {
+                var details = document.getElementById(id);
+                if (details.style.display === "block") {
+                    details.style.display = "none";
+                } else {
+                    details.style.display = "block";
+                }
+            }
+
+            // Event listeners for day circles
+            const circles = document.querySelectorAll('.circle');
+            circles.forEach(circle => {
+                circle.addEventListener('click', function() {
+                    const dayDetailsId = this.getAttribute('data-day');
+                    toggleDetails(dayDetailsId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
