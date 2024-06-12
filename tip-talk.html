@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">"
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<div class="main-content">
+    <div class="community-support">
+        <h2>Community Support</h2>
+        <div class="forum">
+            <p>Engage with the community here...</p>
+        <ul>
+            <li>Share your progress and inspire others on their journey!</li>
+            <li>Have a question or need advice? Post it here and let the community help.</li>
+            <li>Celebrate each other's achievements and provide encouragement.</li>
+            <li>Discuss challenges and strategies for success.</li>
+            <li>Connect with others who share similar goals and interests.</li>
+            <li>Share your favorite recipes or tips for staying motivated.</li>
+            <li>Participate in discussions about health, wellness, and lifestyle changes.</li>
+            <li>Share your thoughts, experiences, and insights with the community.</li>
+            <li>Engage in positive and constructive conversations to foster a supportive community environment.</li>
+
+        </ul>
+        </div>
+    </div>
+    <div class="submit-progress">
+        <h3>Submit Your Progress</h3>
+        <form action="/submit-progress" method="post" enctype="multipart/form-data">
+            <label for="progress-image">Upload Image:</label>
+            <input type="file" id="progress-image" name="progress-image" accept="image/*" required>
+            <label for="progress-description">Description:</label>
+            <textarea id="progress-description" name="progress-description" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="progress-updates">
+        <h2>Progress Updates</h2>
+        <div class="progress-update">
+            <img src="path_to_progress_image.jpg" alt="Progress Image">
+            <p>Description of progress...</p>
+            <div class="comments">
+                <h4>Comments</h4>
+                <ul>
+                    <!-- Comments will be dynamically populated here -->
+                </ul>
+                <form action="/post-comment" method="post">
+                    <input type="hidden" name="progress_id" value="unique_progress_id">
+                    <input type="text" name="comment" placeholder="Write a comment..." required>
+                    <button type="submit">Post</button>
+                </form>
+            </div>
+            <button class="like-btn">Like</button>
+        </div>
+    </div>
+    <div class="social-media">
+        <h3>Social Media</h3>
+        <!-- Include social media widgets or plugins here -->
+        <!-- Example: Embed Twitter timeline -->
+        <a class="twitter-timeline" data-width="300" data-height="400" href="https://twitter.com/your_twitter_handle">Tweets by YourTwitterHandle</a> 
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <!-- Embed Facebook Page Plugin -->
+    <div class="fb-page" data-href="https://www.facebook.com/YourPage" data-tabs="timeline" data-width="300" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/YourPage" class="fb-xfbml-parse-ignore">
+        <a href="https://www.facebook.com/YourPage">Your Page Name</a>
+        </blockquote>
+    </div>
+
+        <!-- Embed TikTok video -->
+        <iframe src="https://www.tiktok.com/embed/videoid" width="300" height="400" frameborder="0"></iframe>
+
+        <!-- Embed Instagram post -->
+        <iframe src="https://www.instagram.com/p/yourpost/" width="100" height="200" frameborder="0" allowfullscreen></iframe>
+
+    </div> 
+    <div class="videos">
+        <h3>Videos of Progress</h3>
+        <!-- forms for users to submit video embeds or links here -->
+        <form id="videoForm" action="process_video.php" method="post">
+            <label for="videoUrl">YouTube Video URL:</label><br>
+            <input type="text" id="videoUrl" name="videoUrl" placeholder="Enter YouTube video URL" required><br><br>
+            
+            <label for="videoTitle">Video Title:</label><br>
+            <input type="text" id="videoTitle" name="videoTitle" placeholder="Enter video title" required><br><br>
+    
+            <label for="videoDescription">Video Description:</label><br>
+            <textarea id="videoDescription" name="videoDescription" placeholder="Enter video description"></textarea><br><br>
+    
+            <button type="submit">Submit Video</button>
+        </form>
+        <!-- Example: Embed YouTube video -->
+        <div id="embeddedVideos"></div>
+        
+        <!--Static embedded video-->
+        <iframe width="300" height="300" src="https://www.youtube.com/embed/your_video_id" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="progress-pictures">
+        <h3>Pictures of Progress</h3>
+        <!-- Include pictures or image galleries here -->
+        <!-- Example: Display images -->
+        <img src="path_to_image1.jpg" alt="Progress Image 1">
+        <img src="path_to_image2.jpg" alt="Progress Image 2">
+    </div>
+    <div class="feedback-support">
+        <h2>Feedback & Support</h2>
+        <div class="feedback-form">
+            <form action="/feedback" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" required></textarea><br>
+                <button type="submit">Submit Feedback</button>
+            </form>
+            <p>Submit your feedback or request support here...</p>
+        </div>
+    </div>
+</div>
